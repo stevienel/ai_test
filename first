@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>My Photography Website</title>
+  <!-- CSS code -->
+  <style>
+    body {
+      background-color: #333;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .section {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .photo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .photo-grid .photo {
+      flex: 0 0 calc(33.333% - 20px);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Welcome to my photography website!</h1>
+    <p>Here are some of my photos:</p>
+    <div class="photo-grid">
+      <div class="photo">
+        <img src="photo1.jpg" alt="A beautiful sunset">
+      </div>
+      <div class="photo">
+        <img src="photo2.jpg" alt="A majestic mountain">
+      </div>
+      <div class="photo">
+        <img src="photo3.jpg" alt="A cute kitten">
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript code -->
+  <script>
+    // Get all of the photos
+    var photos = document.querySelectorAll(".photo img");
+    // Loop through each photo and add a click event listener
+    for (var i = 0; i < photos.length; i++) {
+      photos[i].addEventListener("click", function() {
+        // When the photo is clicked, show the full-size version in a modal
+        var modal = document.createElement("div");
+        modal.classList.add("modal");
+        var img = document.createElement("img");
+        img.src = this.src;
+        modal.appendChild(img);
+        document.body.appendChild(modal);
+        // Add a click event listener to the modal to close it when clicked
+        modal.addEventListener("click", function() {
+          document.body.removeChild(this);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
